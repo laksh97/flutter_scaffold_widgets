@@ -1,6 +1,6 @@
 # flutter_scaffold_widgets
 
-A new Flutter project on Scaffold, Drawer, Floating Action Button widgets.
+A new Flutter project on Scaffold, Drawer, Floating Action Button widgets, Footer Buttons and Bottom Navigation Bar.
 
 ## Getting Started
 
