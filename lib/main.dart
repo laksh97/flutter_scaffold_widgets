@@ -20,6 +20,24 @@ class _MyAppState extends State<MyApp> {
   int _value = 0;
   int _value1 = 0;
   String _text = "";
+  int _index = 0;
+  String _bottomValue = "";
+  List<BottomNavigationBarItem> _items = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _items.add(
+      BottomNavigationBarItem(icon: Icon(Icons.people), label: "People"),
+    );
+    _items.add(
+      BottomNavigationBarItem(icon: Icon(Icons.weekend), label: "Weekend"),
+    );
+    _items.add(
+      BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message"),
+    );
+  }
 
   void _add() {
     setState(() {
@@ -139,9 +157,25 @@ class _MyAppState extends State<MyApp> {
                 _text,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
+              SizedBox(height: 20, width: 20),
+              Text(
+                _bottomValue,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: _items,
+        fixedColor: Colors.red,
+        currentIndex: _index,
+        onTap: (int currentItem) {
+         setState(() {
+            _index = currentItem;
+          _bottomValue = "Current value is ${_index.toString()}";
+         });
+        },
       ),
     );
   }
