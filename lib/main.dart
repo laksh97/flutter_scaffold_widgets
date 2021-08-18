@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _value = 0;
   int _value1 = 0;
+  String _text = "";
 
   void _add() {
     setState(() {
@@ -38,6 +39,8 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _footerClick(String value) => setState(() => _text = value);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +58,17 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
       ),
+      persistentFooterButtons: [
+        IconButton(
+            onPressed: () => _footerClick(DateTime.now().toString()),
+            icon: Icon(Icons.timer)),
+        IconButton(
+            onPressed: () => _footerClick("My name is Jay"),
+            icon: Icon(Icons.people)),
+        IconButton(
+            onPressed: () => _footerClick("Calling John"),
+            icon: Icon(Icons.add_call)),
+      ],
       floatingActionButton: FloatingActionButton(
         onPressed: _onClick,
         elevation: 5.0,
@@ -118,6 +132,11 @@ class _MyAppState extends State<MyApp> {
               SizedBox(height: 20, width: 20),
               Text(
                 "Value changed by FAB is $_value1",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              ),
+              SizedBox(height: 20, width: 20),
+              Text(
+                _text,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
               ),
             ],
